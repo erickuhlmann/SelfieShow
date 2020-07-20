@@ -85,6 +85,10 @@ public class Main extends Application {
 
     }
 
+    /**
+     * Launch the application.
+     * @param args The command line arguments passed in at start up.
+     */
     public static void main(String[] args) {
         launch(args);
     }
@@ -92,6 +96,9 @@ public class Main extends Application {
     private static final int IMAGE_COUNT = 3;
     private Image[] images = new Image[IMAGE_COUNT];
 
+    /**
+     * Load the images from files.
+     */
     private void loadImages()
     {
         for (int i = 0; i < images.length; i++)
@@ -110,6 +117,9 @@ public class Main extends Application {
         updateImage();
     }
 
+    /**
+     * Update the visible image, randomly selected from the list of images.
+     */
     private void updateImage()
     {
         int i = random.nextInt(IMAGE_COUNT);
@@ -127,6 +137,12 @@ public class Main extends Application {
         imageView.setFitHeight(stage.getHeight());
     }
 
+    /**
+     * Make a file name of the format i + suffix + ".jpg".
+     * @param i The first part of the filename.
+     * @param suffix The second part of the filename.
+     * @return The file name.
+     */
     private String makeImageFileName(int i, String suffix)
     {
         if (suffix == null)
@@ -183,6 +199,9 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Hide the cursor if we are full screen.
+     */
     private void updateCursor()
     {
         if (primaryStage.isFullScreen())
