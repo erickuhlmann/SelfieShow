@@ -42,6 +42,7 @@ public class Main extends Application {
     private static Random random = new Random();
 
     private Stage primaryStage;
+    private Scene primaryScene;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -54,7 +55,7 @@ public class Main extends Application {
         Parent root = loader.load();
 
         primaryStage.setTitle("SelfieShow");
-        Scene primaryScene = new Scene(root, 300, 275);
+        primaryScene = new Scene(root, 300, 275);
         primaryStage.setScene(primaryScene);
         primaryStage.show();
 
@@ -71,7 +72,6 @@ public class Main extends Application {
 
         if (ROTATE_IMAGE_VIEW)
             imageView.setRotate(90);
-
 
         // Handle key presses
         primaryScene.addEventHandler(KeyEvent.KEY_PRESSED, (event) -> {
@@ -175,8 +175,24 @@ public class Main extends Application {
                 break;
             case F12:
                 primaryStage.setFullScreen(!primaryStage.isFullScreen());
+                updateCursor();
+                break;
+            case ESCAPE:
+                updateCursor();
                 break;
         }
     }
+
+    private void updateCursor()
+    {
+        if (primaryStage.isFullScreen())
+        {
+            primaryScene.setCursor(Cursor.NONE);
+        } else
+        {
+            primaryScene.setCursor(Cursor.DEFAULT);
+        }
+    }
+
 
 }
