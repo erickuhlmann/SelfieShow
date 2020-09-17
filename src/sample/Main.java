@@ -32,6 +32,7 @@ public class Main extends Application {
     private static final int TIMER_INTERVAL = 100;
     private static final boolean ROTATE_IMAGE_VIEW = false;
     private static final String IMAGE_FILE_SUFFIX = "r90";
+    private static final String MIRROR_FILE_SUFFIX = "m";
 
     @FXML
     ImageView imageView;
@@ -95,19 +96,31 @@ public class Main extends Application {
 
     private static final int IMAGE_COUNT = 3;
     private Image[] images = new Image[IMAGE_COUNT];
+    private Image[] mirrorImages = new Image[IMAGE_COUNT];
 
     /**
      * Load the images from files.
      */
     private void loadImages()
     {
-        for (int i = 0; i < images.length; i++)
+        for (int i = 0; i < IMAGE_COUNT; i++)
         {
             try
             {
                 String fn = makeImageFileName(i+1, IMAGE_FILE_SUFFIX);
                 FileInputStream inputStream = new FileInputStream(makeFilePath("resources", "images", fn));
                 images[i] = new Image(inputStream);
+            }
+            catch (FileNotFoundException ex)
+            {
+                System.out.println(ex.getMessage());
+            }
+
+            try
+            {
+                String fn = makeImageFileName(i+1, IMAGE_FILE_SUFFIX + MIRROR_FILE_SUFFIX);
+                FileInputStream inputStream = new FileInputStream(makeFilePath("resources", "images", fn));
+                mirrorImages[i] = new Image(inputStream);
             }
             catch (FileNotFoundException ex)
             {
