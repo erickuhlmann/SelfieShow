@@ -33,6 +33,7 @@ public class Main extends Application {
     private static final boolean ROTATE_IMAGE_VIEW = false;
     private static final String IMAGE_FILE_SUFFIX = "r90";
     private static final String MIRROR_FILE_SUFFIX = "m";
+    private static final double CHANCE_MIRROR = 0.1;
 
     @FXML
     ImageView imageView;
@@ -136,7 +137,11 @@ public class Main extends Application {
     private void updateImage()
     {
         int i = random.nextInt(IMAGE_COUNT);
-        imageView.setImage(images[i]);
+        double m = random.nextDouble();
+        if (m < CHANCE_MIRROR)
+            imageView.setImage(mirrorImages[i]);
+        else
+            imageView.setImage(images[i]);
     }
 
     /**
