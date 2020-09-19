@@ -33,6 +33,7 @@ public class Main extends Application {
     private static final String IMAGE_FILE_SUFFIX = "r90";
     private static final String MIRROR_FILE_SUFFIX = "m";
     private static final double CHANCE_MIRROR = 0.1;
+    private static final double CHANCE_NULL = 0.02;
     private static final boolean START_FULL_SCREEN = true;
 
     @FXML
@@ -140,10 +141,14 @@ public class Main extends Application {
     {
         int i = random.nextInt(IMAGE_COUNT);
         double m = random.nextDouble();
-        if (m < CHANCE_MIRROR)
-            imageView.setImage(mirrorImages[i]);
+        double n = random.nextDouble();
+        if (n < CHANCE_NULL)
+            imageView.setImage(null);
         else
-            imageView.setImage(images[i]);
+            if (m < CHANCE_MIRROR)
+                imageView.setImage(mirrorImages[i]);
+            else
+                imageView.setImage(images[i]);
     }
 
     /**
