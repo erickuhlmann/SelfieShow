@@ -7,7 +7,6 @@ import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -34,6 +33,7 @@ public class Main extends Application {
     private static final String IMAGE_FILE_SUFFIX = "r90";
     private static final String MIRROR_FILE_SUFFIX = "m";
     private static final double CHANCE_MIRROR = 0.1;
+    private static final boolean START_FULL_SCREEN = true;
 
     @FXML
     ImageView imageView;
@@ -85,6 +85,8 @@ public class Main extends Application {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
+        if (START_FULL_SCREEN)
+            primaryStage.setFullScreen(true);
     }
 
     /**
