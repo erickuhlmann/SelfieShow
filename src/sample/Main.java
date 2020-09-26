@@ -87,10 +87,12 @@ public class Main extends Application {
         timeline.play();
 
         if (START_FULL_SCREEN)
+        {
             primaryStage.setFullScreen(true);
-
-        primaryScene.setCursor(Cursor.NONE);
+            updateCursor();
+        }
     }
+
 
     /**
      * Launch the application.
