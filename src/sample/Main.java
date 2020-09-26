@@ -88,6 +88,8 @@ public class Main extends Application {
 
         if (START_FULL_SCREEN)
             primaryStage.setFullScreen(true);
+
+        primaryScene.setCursor(Cursor.NONE);
     }
 
     /**
