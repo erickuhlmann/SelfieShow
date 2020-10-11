@@ -74,7 +74,7 @@ public class Main extends Application {
         resizeImageView(primaryStage, primaryScene);
 
         if (ROTATE_IMAGE_VIEW)
-            imageView.setRotate(90);
+            imageView.setRotate(-90);
 
         // Handle key presses
         primaryScene.addEventHandler(KeyEvent.KEY_PRESSED, (event) -> {
